@@ -4,29 +4,45 @@ import edu.esprit.entities.Animal;
 import edu.esprit.entities.Zoo;
 
 public class ZooManagement {
-    public static void main(String[] args) {
-        Animal lion = new Animal("Félin", "Lion", 5, true);
-        Animal elephant = new Animal("Mammifère", "Éléphant", 10, true);
-        Animal crocodile = new Animal("Reptile", "Crocodile", 8, false);
-        Zoo myZoo = new Zoo("belvédère", "Nabeul");
+        public static void main(String[] args) {
+            Animal lion = new Animal();
+            lion.setName("Simba");
+            lion.setAge(8);
+            lion.setFamily("Cats");
+            lion.setMammal(true);
 
-        System.out.println(myZoo.addAnimal(lion));
-        myZoo.addAnimal(lion);
-        myZoo.addAnimal(elephant);
-        myZoo.addAnimal(crocodile);
-        myZoo.displayAnimals();
-        // Supprimer un animal du zoo
-        myZoo.removeAnimal(elephant);
-        // Afficher à nouveau la liste des animaux après la suppression
-        myZoo.displayAnimals();
-        System.out.println(myZoo);
-        // Comparer deux zoos
-        Zoo anotherZoo = new Zoo("Zoo2", "Tunis");
-        anotherZoo.addAnimal(new Animal("Oiseau", "Aigle", 3, false));
-        // Afficher des informations sur le zoo
-        anotherZoo.displayZoo();
-        // Afficher la liste des animaux dans le zoo
-        anotherZoo.displayAnimals();
-    }
+            Zoo myZoo = new Zoo("Wildlife Park", "Ariana");
+            Zoo notMyZoo = new Zoo("WaterPark", "Siliana");
 
+
+            Animal dog = new Animal("Canine", "Snoopy", 2, true);
+
+
+            System.out.println(myZoo.addAnimal(lion));
+            System.out.println(myZoo.addAnimal(dog));
+
+            myZoo.displayAnimals();
+
+            System.out.println(myZoo.searchAnimal(dog));
+            Animal dog2 = new Animal("Canine", "lll", 2, true);
+            System.out.println(myZoo.searchAnimal(dog2));
+
+//           System.out.println(myZoo.removeAnimal(dog));
+            myZoo.displayAnimals();
+
+
+            System.out.println(myZoo);
+
+            myZoo.addAnimal(lion);
+            myZoo.addAnimal(dog);
+            myZoo.addAnimal(dog2);
+            myZoo.displayAnimals();
+
+
+            myZoo.setName("Belvedere Park");
+            Zoo notMyZoo1 = Zoo.comparerZoo(myZoo, notMyZoo);
+            System.out.println(notMyZoo1);
+
+
+        }
 }
