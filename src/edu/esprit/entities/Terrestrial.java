@@ -1,6 +1,5 @@
 package edu.esprit.entities;
-
-public class Terrestrial extends Animal {
+public final class Terrestrial extends Animal {
     int nbrLegs ;
      public Terrestrial() {
      }
