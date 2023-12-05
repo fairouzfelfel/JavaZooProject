@@ -18,11 +18,11 @@ public  class Zoo  {
         this.city = city;
     }
 
-    public int getNbrAnimals() {
+    public int getNbrAnimaux() {
         return nbrAnimaux;
     }
 
-    public void setNbrAnimals(int nbrAnimals) {
+    public void setNbrAnimals(int nbrAnimaux ) {
         this.nbrAnimaux = nbrAnimaux;
     }
     public Zoo(String name, String city) {

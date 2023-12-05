@@ -1,7 +1,7 @@
 package edu.esprit.entities;
 import edu.esprit.test.ZooManagement;
 
-public class Animal {
+public sealed class Animal permits Aquatic, Terrestrial {
     private String family;
     private String name ;
     private int age ;
@@ -45,6 +45,7 @@ public class Animal {
     public void setMammal(boolean mammal) {
         isMammal = mammal;
     }
+
     @Override
     public String toString() {
         return "Animal{" +

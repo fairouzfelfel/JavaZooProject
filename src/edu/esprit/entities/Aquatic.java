@@ -1,11 +1,8 @@
 package edu.esprit.entities;
 
-public  class Aquatic extends Animal {
+public non-sealed class Aquatic extends Animal {
     String habitat ;
-
-
     public Aquatic () {
-
     }
     public Aquatic(String family, String name, int age, boolean isMammal, String habitat) {
         super(family, name, age, isMammal);
