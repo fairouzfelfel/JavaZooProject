@@ -1,12 +1,15 @@
 package edu.esprit.entities;
+import edu.esprit.Exceptions.ZooFullExceptions;
 import edu.esprit.test.ZooManagement;
 import java.util.Arrays;
 public  class Zoo  {
     static  int nbrAnimaux ;
    private Animal[] animals;
+   private Aquatic[] aquaticAnimals;
    private String name;
    private String city;
     static final int nbrCages=5;
+    private int nbrAquatics;
 
     public Zoo() {
     }
@@ -22,11 +25,27 @@ public  class Zoo  {
         return nbrAnimaux;
     }
 
+    public int getNbrAquatics() {
+        return nbrAquatics;
+    }
+    public void setNbrAquatics(int nbrAquatics) {
+        this.nbrAquatics = nbrAquatics;
+    }
+
+    public Aquatic[] getAquaticAnimals() {
+        return aquaticAnimals;
+    }
+
+    public void setAquaticAnimals(Aquatic[] aquaticAnimals) {
+        this.aquaticAnimals = aquaticAnimals;
+    }
+
     public void setNbrAnimals(int nbrAnimaux ) {
         this.nbrAnimaux = nbrAnimaux;
     }
     public Zoo(String name, String city) {
         this.animals = new Animal[nbrCages];
+        aquaticAnimals = new Aquatic[10];
         this.name = name;
         this.city = city;
     }
@@ -34,15 +53,14 @@ public  class Zoo  {
     public void displayZoo() {
         System.out.println("Name: " + name + ", City: " + city + ", nombre de Cages " + nbrCages);
     }
-    public boolean addAnimal(Animal animal) {
-        System.out.println(animal);
+    public void addAnimal(Animal animal) throws ZooFullExceptions {
         if (searchAnimal(animal) != -1)
-            return false;
-        if (nbrAnimaux == nbrCages)
-            return false;
+            System.out.println("This animal already exist");
+        if (isZooFull()){
+            throw new ZooFullExceptions("The Zoo is full");
+        }
         animals[nbrAnimaux] = animal;
         nbrAnimaux++;
-        return true;
     }
 
     public int searchAnimal(Animal animal) {
@@ -93,7 +111,34 @@ public  class Zoo  {
         else
             this.name = name;
     }
+public void addAquaticAnimal(Aquatic aquatic){
+    aquaticAnimals[nbrAquatics] = aquatic;
+    nbrAquatics++;
+}
+    public float maxPenguinSwimmingDepth() {
+        float maxDepth = 0f;
+        for (int i = 0; i < nbrAquatics; i++) {
+            if (aquaticAnimals[i] instanceof Penguin penguin) {
+                if (maxDepth < penguin.getSwimmingDepth())
+                    maxDepth = penguin.getSwimmingDepth();
+            }
+        }
+        return maxDepth;
+    }
 
+    public void displayNumberOfAquaticsByType() {
+        int nbrPenguins = 0;
+        int nbrDolphins = 0;
+        for (int i = 0; i < nbrAquatics; i++) {
+            if (aquaticAnimals[i] instanceof Dolphin) {
+                nbrDolphins++;
+            }
+            if (aquaticAnimals[i] instanceof Penguin) {
+                nbrPenguins++;
+            }
+        }
+        System.out.println("Le Zoo " + name + " contient " + nbrDolphins + " dauphins et " + nbrPenguins + " penguins");
+    }
     @Override
     public String toString() {
         return "Zoo{" +
