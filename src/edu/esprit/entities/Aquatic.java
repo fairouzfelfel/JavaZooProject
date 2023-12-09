@@ -1,6 +1,9 @@
 package edu.esprit.entities;
 
-public abstract non-sealed class Aquatic extends Animal {
+import edu.esprit.entities.enums.FOOD;
+import edu.esprit.interfaces.Carnivore;
+
+public abstract non-sealed class Aquatic extends Animal implements Carnivore<FOOD>  {
     String habitat ;
     private int nbrAquatics;
 
@@ -24,6 +27,11 @@ public abstract non-sealed class Aquatic extends Animal {
             return aquatic.habitat.equals(habitat) && aquatic.getName().equals(super.getName()) && aquatic.getAge() == super.getAge();
         }
         return false;
+    }
+
+    @Override
+    public void eatMeat(FOOD meat) {
+        System.out.println("this aquatic animal is carnivore");
     }
 }
 
